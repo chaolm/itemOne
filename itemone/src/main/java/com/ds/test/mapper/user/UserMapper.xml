@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ds.test.mapper.user.UserMapper">
+    <select id="getUser" resultType="com.ds.test.dto.User">
+        select * from cd_user
+    </select>
+
+    <select id="getUserByParam" resultType="com.ds.test.dto.User" parameterType="map">
+        select * from cd_user where 1 = 1
+        <if test="userCode != null">
+            and userCode = #{userCode}
+        </if>
+        <if test="phone != null">
+            and phone = #{phone}
+        </if>
+
+    </select>
+
+    <insert id="addUser" parameterType="com.ds.test.dto.User">
+        insert into cd_user
+        (userCode,name,age,address,phone,password,orgCode,recommendCode)
+        values (#{userCode},#{name},#{age},#{address},#{phone},#{password},#{orgCode},#{recommendCode})
+    </insert>
+
+    <update id="updateUser" parameterType="com.ds.test.dto.User">
+        update  cd_user
+        <set>
+
+            <if test="userType != null">userType = #{userType},</if>
+            <if test="name != null">name = #{name},</if>
+            <if test="age != null">age = #{age},</if>
+            <if test="address != null">address = #{address},</if>
+            <if test="phone != null">phone = #{phone},</if>
+            <if test="orgCode != null">orgCode = #{orgCode},</if>
+        </set>
+        where userCode = #{userCode}
+    </update>
+
+    <update id="updateUserPassword" parameterType="com.ds.test.dto.User">
+        update  cd_user
+        <set>
+            <if test="password != null">password = #{password}</if>
+        </set>
+        where userCode = #{userCode}
+    </update>
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ds.test.mapper.parameter.ParameterMapper">
+    <select id="getParameter" resultType="com.ds.test.dto.Parameter">
+        select * from cd_parameter
+    </select>
+
+    <select id="getParameterByParam" resultType="com.ds.test.dto.Parameter" parameterType="map">
+        select * from cd_parameter where 1 = 1
+        <if test="paramName != null">
+            and paramName = #{paramName}
+        </if>
+        <if test="orgCode != null">
+            and orgCode = #{orgCode}
+        </if>
+        and  del = 0
+    </select>
+
+</mapper>

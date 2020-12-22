@@ -1,0 +1,44 @@
+server:
+  port: 1134
+
+spring:
+  #mvc:
+    # view:
+    #prefix: /WEB-INF/jsp/
+    # suffix: .jsp
+  application:
+    name: itemone
+  datasource:
+    username: root
+    password: 123
+    url: jdbc:mysql://127.0.0.1:3306/demo?useUnicode=true&useSSL=true
+    driver-class-name : com.mysql.jdbc.Driver
+  freemarker:
+    template-loader-path: classpath:/templates
+    cache: false
+    charset: UTF-8
+    check-template-location: true
+    content-type: text/html
+    expose-request-attributes: false
+    expose-session-attributes: false
+    request-context-attribute: request
+    suffix: .ftl
+  redis:
+    host: localhost
+    password: 123
+    port: 6379
+    pool:
+      max-idle: 100
+      min-idle: 1
+      max-active: 1000
+      max-wait: -1
+mybatis-plus:
+    # 是否开启自动驼峰命名规则（camel case）映射，即从经典数据库列名 A_COLUMN（下划线命名） 到经典 Java 属性名 aColumn（驼峰命名） 的类似映射
+    map-underscore-to-camel-case: true
+logging:
+  level:
+    com.ds.test.mapper: debug
+filePath: F:\itemone\src\main\resources\static\imgs\
+
+
+

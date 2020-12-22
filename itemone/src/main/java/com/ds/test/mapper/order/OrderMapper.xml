@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ds.test.mapper.order.OrderMapper">
+    <select id="getOrder" parameterType="com.ds.test.dto.Order" resultType="com.ds.test.dto.Order">
+        select * from cd_order where 1 = 1
+        <if test="orderId != null">
+            and orderId = #{orderId}
+        </if>
+        <if test="userCode != null">
+            and userCode = #{userCode}
+        </if>
+        <if test="itemId != null">
+            and itemId = #{itemId}
+        </if>
+    </select>
+
+    <insert id="addOrder" parameterType="com.ds.test.dto.Order">
+        insert into cd_order
+        <trim prefix="(" suffix=")" suffixOverrides=", ">
+            <if test="orderId != null">orderId,</if>
+            <if test="userCode != null">userCode,</if>
+            <if test="itemId != null">itemId,</if>
+            <if test="itemMainTitle != null">itemMainTitle,</if>
+            <if test="orderType != null">orderType,</if>
+            <if test="payMoney != null">payMoney,</if>
+            <if test="hangStartTime != null">hangStartTime,</if>
+            <if test="hangEndTime != null">hangEndTime,</if>
+            <if test="payChannel != null">payChannel,</if>
+            <if test="payType != null">payType,</if>
+            <if test="payTime != null">payTime,</if>
+            <if test="orgCode != null">orgCode,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="orderId != null">#{orderId},</if>
+            <if test="userCode != null">#{userCode},</if>
+            <if test="itemId != null">#{itemId},</if>
+            <if test="itemMainTitle != null">#{itemMainTitle},</if>
+            <if test="orderType != null">#{orderType},</if>
+            <if test="payMoney != null">#{payMoney},</if>
+            <if test="hangStartTime != null">#{hangStartTime},</if>
+            <if test="hangEndTime != null">#{hangEndTime},</if>
+            <if test="payChannel != null">#{payChannel},</if>
+            <if test="payType != null">#{payType},</if>
+            <if test="payTime != null">#{payTime},</if>
+            <if test="orgCode != null">#{orgCode},</if>
+        </trim>
+    </insert>
+    <update id="updateOrder" parameterType="com.ds.test.dto.Order">
+        update cd_order
+        <set>
+            <if test="userCode != null">userCode = #{userCode},</if>
+            <if test="itemId != null">itemId = #{itemId},</if>
+            <if test="itemMainTitle != null">itemMainTitle = #{itemMainTitle},</if>
+            <if test="orderType != null">orderType = #{orderType},</if>
+            <if test="payMoney != null">payMoney = #{payMoney},</if>
+            <if test="hangStartTime != null">hangStartTime = #{hangStartTime},</if>
+            <if test="hangEndTime != null">hangEndTime = #{hangEndTime},</if>
+            <if test="payChannel != null">payChannel = #{payChannel},</if>
+            <if test="payType != null">payType = #{payType},</if>
+            <if test="payTime != null">payTime = #{payTime},</if>
+            <if test="orgCode != null">orgCode = #{orgCode},</if>
+            <if test="del != null">del = #{del},</if>
+        </set>
+        where orderId=#{orderId}
+    </update>
+</mapper>

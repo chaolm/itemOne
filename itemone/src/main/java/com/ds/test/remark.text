@@ -1,0 +1,9 @@
+通过springboot默认的静态资源文件夹路径导入
+classpath:/META-INF/resources/
+classpath:/resources/
+classpath:/static/
+classpath:/public
+
+
+
+招聘 广告 调查 活动

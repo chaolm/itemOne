@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ds.test.mapper.user.AccountMapper">
+    <cache></cache>
+    <select id="getAccount" resultType="com.ds.test.dto.Account">
+        select * from cd_account
+    </select>
+
+    <select id="getAccountByParam" resultType="com.ds.test.dto.Account" parameterType="com.ds.test.dto.Account">
+        select * from cd_account where 1 = 1
+        <if test="userCode != null">
+            and userCode = #{userCode}
+        </if>
+    </select>
+
+    <insert id="addAccount" parameterType="com.ds.test.dto.Account">
+        insert into cd_account
+        (accountId,userCode,accountType,availableMoney,totalPayMoney,orgCode)
+        values (#{accountId},#{userCode},#{accountType},#{availableMoney},#{totalPayMoney},#{orgCode})
+    </insert>
+
+    <update id="updateAccount">
+        update  cd_account
+        <set>
+            <if test="accountType != null">accountType = #{accountType},</if>
+            <if test="availableMoney != null">availableMoney = #{availableMoney},</if>
+            <if test="totalPayMoney != null">totalPayMoney = #{totalPayMoney},</if>
+            <if test="orgCode != null">totalPayMoney = #{orgCode},</if>
+        </set>
+        where
+        1 = 1
+        <if test="userCode">
+            and userCode = #{userCode}
+        </if>
+        <if test="accountId">
+            and accountId = #{accountId}
+        </if>
+    </update>
+
+</mapper>

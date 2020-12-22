@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ds.test.mapper.accountflow.AccountFlowMapper">
+
+    <select id="getAccountFlowList"  resultType="com.ds.test.dto.AccountFlow">
+        select * from cd_account_flow
+    </select>
+
+    <insert id="addAccountFlow" parameterType="com.ds.test.dto.AccountFlow">
+        insert into cd_account_flow
+        <trim prefix="(" suffix=")" suffixOverrides=", ">
+            <if test="accountFlowId != null">accountFlowId,</if>
+            <if test="accountId != null">accountId,</if>
+            <if test="flowMoney != null">flowMoney,</if>
+            <if test="flowItemId != null">flowItemId,</if>
+            <if test="flowItemType != null">flowItemType,</if>
+            <if test="orgCode != null">orgCode,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="accountFlowId != null">#{accountFlowId},</if>
+            <if test="accountId != null">#{accountId},</if>
+            <if test="flowMoney != null">#{flowMoney},</if>
+            <if test="flowItemId != null">#{flowItemId},</if>
+            <if test="flowItemType != null">#{flowItemType},</if>
+            <if test="orgCode != null">#{orgCode},</if>
+            <if test="createTime != null">#{createTime},</if>
+        </trim>
+    </insert>
+    <update id="updateAccountFlow" parameterType="com.ds.test.dto.AccountFlow">
+        update cd_account_flow
+        <set>
+            <if test="accountId != null">accountId = #{accountId},</if>
+            <if test="flowMoney != null">flowMoney = #{flowMoney},</if>
+            <if test="flowItemId != null">flowItemId = #{flowItemId},</if>
+            <if test="flowItemType != null">flowItemType = #{flowItemType},</if>
+            <if test="orgCode != null">orgCode = #{orgCode},</if>
+            <if test="createTime != null">createTime = #{createTime},</if>
+        </set>
+        where accountFlowId=#{accountFlowId}
+    </update>
+</mapper>

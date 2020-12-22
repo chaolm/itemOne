@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ds.test.mapper.advertisement.AdvertisementMapper">
+
+    <!--<cache type="com.shulan.ms.ocs.config.MybatisRedisCache"/>-->
+    <select id="getAdvertisementList" parameterType="map" resultType="com.ds.test.dto.Advertisement">
+        select * from cd_advertisement where 1 = 1
+        <if test="userCode != null">
+            and userCode = #{userCode}
+        </if>
+        <if test="advertisementId != null">
+            and advertisementId = #{advertisementId}
+        </if>
+        <if test="activeType != null">
+            and activeType = #{activeType}
+        </if>
+        <if test="del != null">
+            and del = #{del}
+        </if>
+
+    </select>
+
+    <insert id="add" parameterType="com.ds.test.dto.Advertisement">
+        insert into cd_advertisement
+        <trim prefix="(" suffix=")" suffixOverrides=", ">
+            <if test="advertisementId != null">advertisementId,</if>
+            <if test="userCode != null">userCode,</if>
+            <if test="mainTitle != null">mainTitle,</if>
+            <if test="firstTitle != null">firstTitle,</if>
+            <if test="otherTitle != null">otherTitle,</if>
+            <if test="label != null">label,</if>
+            <if test="seeNum != null">seeNum,</if>
+            <if test="activeType != null">activeType,</if>
+            <if test="topStatus != null">topStatus,</if>
+            <if test="limitNum != null">limitNum,</if>
+            <if test="contactPerson != null">contactPerson,</if>
+            <if test="contactPhone != null">contactPhone,</if>
+            <if test="hangTimeLength != null">hangTimeLength,</if>
+            <if test="hangEndTime != null">hangEndTime,</if>
+            <if test="activeShopName != null">activeShopName,</if>
+            <if test="activeAdress != null">activeAdress,</if>
+            <if test="message != null">message,</if>
+            <if test="pictureUrl != null">pictureUrl,</if>
+            <if test="activeStartTime != null">activeStartTime,</if>
+            <if test="activeEndTime != null">activeEndTime,</if>
+            <if test="invalid != null">invalid,</if>
+            <if test="orgCode != null">orgCode,</if>
+            <if test="firstPictureUrl != null">firstPictureUrl,</if>
+            <if test="album != null">album,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="advertisementId != null">#{advertisementId},</if>
+            <if test="userCode != null">#{userCode},</if>
+            <if test="mainTitle != null">#{mainTitle},</if>
+            <if test="firstTitle != null">#{firstTitle},</if>
+            <if test="otherTitle != null">#{otherTitle},</if>
+            <if test="label != null">#{label},</if>
+            <if test="seeNum != null">#{seeNum},</if>
+            <if test="activeType != null">#{activeType},</if>
+            <if test="topStatus != null">#{topStatus},</if>
+            <if test="limitNum != null">#{limitNum},</if>
+            <if test="contactPerson != null">#{contactPerson},</if>
+            <if test="contactPhone != null">#{contactPhone},</if>
+            <if test="hangTimeLength != null">#{hangTimeLength},</if>
+            <if test="hangEndTime != null">#{hangEndTime},</if>
+            <if test="activeShopName != null">#{activeShopName},</if>
+            <if test="activeAdress != null">#{activeAdress},</if>
+            <if test="message != null">#{message},</if>
+            <if test="pictureUrl != null">#{pictureUrl},</if>
+            <if test="activeStartTime != null">#{activeStartTime},</if>
+            <if test="activeEndTime != null">#{activeEndTime},</if>
+            <if test="invalid != null">#{invalid},</if>
+            <if test="orgCode != null">#{orgCode},</if>
+            <if test="firstPictureUrl != null">#{firstPictureUrl},</if>
+            <if test="album != null">#{album},</if>
+        </trim>
+    </insert>
+    <update id="update" parameterType="com.ds.test.dto.Advertisement">
+        update cd_advertisement
+        <set>
+            <if test="mainTitle != null">mainTitle = #{mainTitle},</if>
+            <if test="firstTitle != null">firstTitle = #{firstTitle},</if>
+            <if test="otherTitle != null">otherTitle = #{otherTitle},</if>
+            <if test="label != null">label = #{label},</if>
+            <if test="seeNum != null">seeNum = #{seeNum},</if>
+            <if test="activeType != null">activeType = #{activeType},</if>
+            <if test="topStatus != null">topStatus = #{topStatus},</if>
+            <if test="limitNum != null">limitNum = #{limitNum},</if>
+            <if test="contactPerson != null">contactPerson = #{contactPerson},</if>
+            <if test="contactPhone != null">contactPhone = #{contactPhone},</if>
+            <if test="hangTimeLength != null">hangTimeLength = #{hangTimeLength},</if>
+            <if test="hangEndTime != null">hangEndTime = #{hangEndTime},</if>
+            <if test="activeShopName != null">activeShopName = #{activeShopName},</if>
+            <if test="activeAdress != null">activeAdress = #{activeAdress},</if>
+            <if test="message != null">message = #{message},</if>
+            <if test="pictureUrl != null">pictureUrl = #{pictureUrl},</if>
+            <if test="activeStartTime != null">activeStartTime = #{activeStartTime},</if>
+            <if test="activeEndTime != null">activeEndTime = #{activeEndTime},</if>
+            <if test="invalid != null">invalid = #{invalid},</if>
+            <if test="orgCode != null">orgCode = #{orgCode},</if>
+            <if test="firstPictureUrl != null">firstPictureUrl = #{firstPictureUrl},</if>
+            <if test="album != null">album = #{album},</if>
+            </set>
+    where advertisementId=#{advertisementId}
+    </update>
+</mapper>

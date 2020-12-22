@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ds.test.mapper.recruit.RecruitMapper">
+    <select id="getRecruit" resultType="com.ds.test.dto.Recruit">
+        select * from cd_recruit
+    </select>
+
+    <select id="getRecruitByParam" resultType="com.ds.test.dto.Recruit" parameterType="map">
+        select * from cd_recruit where 1 = 1
+        <if test="userCode != null">
+            and userCode = #{userCode}
+        </if>
+        <if test="recruitId != null">
+            and recruitId = #{recruitId}
+        </if>
+    </select>
+    <insert id="addRecruit" parameterType="com.ds.test.dto.Recruit">
+        insert into cd_recruit
+        (recruitId,userCode,mainTitle,firstTitle,otherTitle,seeNum,positionName,positionCategory,hangTimeLength
+        ,hangEndTime,salary,recruitNumber,workCompanyName,workAdress,welfareLabel,message,contactPerson,contactPhone
+        ,startTime,endTime,sexRequire,ageRequire,educationRequire,pictureUrl,topStatus,invalid,del,orgCode)
+        values
+        (#{recruitId},#{userCode},#{mainTitle},#{firstTitle},#{otherTitle},#{seeNum},#{positionName},#{positionCategory},#{hangTimeLength}
+        ,#{hangEndTime},#{salary},#{recruitNumber},#{workCompanyName},#{workAdress},#{welfareLabel},#{message},#{contactPerson},#{contactPhone}
+        ,#{startTime},#{endTime},#{sexRequire},#{ageRequire},#{educationRequire},#{pictureUrl},#{topStatus},#{invalid},#{del},#{orgCode})
+    </insert>
+
+    <update id="updateRecruit" parameterType="com.ds.test.dto.Recruit">
+
+        update cd_recruit
+        <set>
+            <if test="userCode != null">userCode = #{userCode},</if>
+            <if test="mainTitle != null">mainTitle = #{mainTitle},</if>
+            <if test="otherTitle != null">otherTitle = #{otherTitle},</if>
+            <if test="seeNum != null">seeNum = #{seeNum},</if>
+            <if test="positionName != null">positionName = #{positionName},</if>
+            <if test="positionCategory != null">positionCategory = #{positionCategory},</if>
+            <if test="hangTimeLength != null">hangTimeLength = #{hangTimeLength},</if>
+            <if test="hangEndTime != null">hangEndTime = #{hangEndTime},</if>
+            <if test="salary != null">salary = #{salary},</if>
+            <if test="recruitNumber != null">recruitNumber = #{recruitNumber},</if>
+            <if test="workCompanyName != null">workCompanyName = #{workCompanyName},</if>
+            <if test="workAdress != null">workAdress = #{workAdress},</if>
+            <if test="welfareLabel != null">welfareLabel = #{welfareLabel},</if>
+            <if test="message != null">message = #{message},</if>
+            <if test="contactPerson != null">contactPerson = #{contactPerson},</if>
+            <if test="contactPhone != null">contactPhone = #{contactPhone},</if>
+            <if test="startTime != null">startTime = #{startTime},</if>
+            <if test="endTime != null">endTime = #{endTime},</if>
+            <if test="sexRequire != null">sexRequire = #{sexRequire},</if>
+            <if test="ageRequire != null">ageRequire = #{ageRequire},</if>
+            <if test="educationRequire != null">educationRequire = #{educationRequire},</if>
+            <if test="pictureUrl != null">pictureUrl = #{pictureUrl},</if>
+            <if test="topStatus != null">topStatus = #{topStatus},</if>
+            <if test="invalid != null">invalid = #{invalid},</if>
+            <if test="del != null">del = #{del},</if>
+            <if test="orgCode != null">orgCode = #{orgCode},</if>
+        </set>
+        where recruitId = #{recruitId}
+    </update>
+</mapper>
