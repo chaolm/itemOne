@@ -30,7 +30,7 @@
                 dataType: 'json',
                 success: function(result) {
                     if(result.status == 0){
-                        alert("注册用户成功");
+                        alert("注册用户成功1");
                     }
                     if(result.status == 1){
                         alert(result.message);
